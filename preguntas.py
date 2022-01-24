@@ -323,11 +323,14 @@ def pregunta_09():
         listas.append([d[0], int(d[1])])
     valores= list(set(lista1))
     valores.sort()
-    listota=[]
+    listota2=[]
+    listota1=[]
     for i in valores: 
         c=[b[1] for b in listas if b[0]==i] 
-        listota.append((i,len(c)))    
-    return listota
+        listota1.append(i) 
+        listota2.append(len(c))   
+    dicc= dict(zip(listota1, listota2))
+    return dicc
 
 
 def pregunta_10():
