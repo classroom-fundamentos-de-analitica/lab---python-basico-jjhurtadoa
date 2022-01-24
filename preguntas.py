@@ -160,10 +160,7 @@ def pregunta_05():
     lista.sort(key=lambda x: x[0])
 
     return lista
-<<<<<<< HEAD
 
-=======
->>>>>>> 7621f1bba24a1ecd06ed4f275cb9d9f01d8bd229
 
 def pregunta_06():
     """
