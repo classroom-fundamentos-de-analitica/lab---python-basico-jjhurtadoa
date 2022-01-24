@@ -12,7 +12,6 @@ Utilice el archivo `data.csv` para resolver las preguntas.
 
 """
 
-
 def pregunta_01():
     """
     Retorne la suma de la segunda columna.
@@ -161,6 +160,10 @@ def pregunta_05():
     lista.sort(key=lambda x: x[0])
 
     return lista
+<<<<<<< HEAD
+
+=======
+>>>>>>> 7621f1bba24a1ecd06ed4f275cb9d9f01d8bd229
 
 def pregunta_06():
     """
@@ -184,7 +187,31 @@ def pregunta_06():
     ]
 
     """
-    return
+    import re
+    x = open("data.csv", "r").readlines()
+    x = [z.replace("\t", " ") for z in x]
+    x = [z.replace("\n", "") for z in x]    
+    pattern = r'\s[a-z]{3}.*'
+    a=[re.findall(pattern, j) for j in x]    
+    a=[x[0].strip() for x in a]
+    lista=[]
+    for i in a:
+        b=i.split(',')
+        for k in b:
+            lista.append(k)
+    lista1=[]    
+    listas=[]
+    for c in lista: 
+        d=c.split(':')
+        lista1.append(d[0])
+        listas.append([d[0], int(d[1])])
+    valores= list(set(lista1))
+    valores.sort()
+    listota=[]
+    for i in valores: 
+        c=[b[1] for b in listas if b[0]==i] 
+        listota.append((i,min(c), max(c)))    
+    return listota
 
 
 def pregunta_07():
@@ -208,7 +235,18 @@ def pregunta_07():
     ]
 
     """
-    return
+
+    x = open("data.csv", "r").readlines()
+    segunda= [int(z[2]) for z in x]     
+    valores=list(set(segunda))
+    valores.sort()
+    listas= [(z[0], int(z[2])) for z in x]
+    listas=[list(i) for i in listas]
+    solucion=[]
+    for i in valores: 
+        b=[x[0] for x in listas if (x[1])==i]
+        solucion.append((i, b))
+    return solucion
 
 
 def pregunta_08():
@@ -233,7 +271,19 @@ def pregunta_08():
     ]
 
     """
-    return
+    x = open("data.csv", "r").readlines()
+    segunda= [int(z[2]) for z in x]     
+    valores=list(set(segunda))
+    valores.sort()
+    listas= [(z[0], int(z[2])) for z in x]
+    listas=[list(i) for i in listas]
+    solucion=[]
+    for i in valores: 
+        b=[x[0] for x in listas if (x[1])==i]
+        b=list(set(b))
+        b.sort()
+        solucion.append((i, b))
+    return solucion
 
 
 def pregunta_09():
@@ -256,7 +306,31 @@ def pregunta_09():
     }
 
     """
-    return
+    import re
+    x = open("data.csv", "r").readlines()
+    x = [z.replace("\t", " ") for z in x]
+    x = [z.replace("\n", "") for z in x]    
+    pattern = r'\s[a-z]{3}.*'
+    a=[re.findall(pattern, j) for j in x]    
+    a=[x[0].strip() for x in a]
+    lista=[]
+    for i in a:
+        b=i.split(',')
+        for k in b:
+            lista.append(k)
+    lista1=[]    
+    listas=[]
+    for c in lista: 
+        d=c.split(':')
+        lista1.append(d[0])
+        listas.append([d[0], int(d[1])])
+    valores= list(set(lista1))
+    valores.sort()
+    listota=[]
+    for i in valores: 
+        c=[b[1] for b in listas if b[0]==i] 
+        listota.append((i,len(c)))    
+    return listota
 
 
 def pregunta_10():
@@ -277,7 +351,14 @@ def pregunta_10():
 
 
     """
-    return
+    
+    x = open("data.csv", "r").readlines()
+    x = [z.replace("\t", " ") for z in x]
+    x = [z.replace("\n", "") for z in x]    
+
+    sol= [(i[0],i.count(',')-i.count(':')+2, i.count(':')) for i in x]
+
+    return  sol
 
 
 def pregunta_11():
