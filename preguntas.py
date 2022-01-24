@@ -22,10 +22,12 @@ def pregunta_01():
 
     """
     x = open("data.csv", "r").readlines()
+    segunda= [int(z[2]) for z in x]
+    sol=sum(segunda)
     
 
     
-    return len(x)
+    return sol
 
 
 def pregunta_02():
@@ -43,7 +45,19 @@ def pregunta_02():
     ]
 
     """
-    return
+    x = open("data.csv", "r").readlines()
+    primera= [(z[0]) for z in x]
+    valores=list(set(primera))
+    lista=[]
+    for i in valores: 
+        c=[b for b in primera if b==i]        
+        c=len(c)        
+        lista.append((i,c))    
+    lista.sort(key=lambda x: x[0])
+
+
+    
+    return lista
 
 
 def pregunta_03():
@@ -61,7 +75,21 @@ def pregunta_03():
     ]
 
     """
-    return
+    x = open("data.csv", "r").readlines()
+    primera= [z[0] for z in x]   
+    
+    valores=list(set(primera))
+    listas= [(z[0], int(z[2])) for z in x]
+    listas=[list(i) for i in listas]
+     
+    lista=[]
+    for i in valores: 
+        c=[b[1] for b in listas if b[0]==i]        
+        c=sum(c)        
+        lista.append((i,c))    
+    lista.sort(key=lambda x: x[0])
+
+    return lista
 
 
 def pregunta_04():
@@ -85,8 +113,23 @@ def pregunta_04():
         ("12", 3),
     ]
 
-    """
-    return
+    """    
+
+
+    x = open("data.csv", "r").readlines()
+    fecha= [z[4:14] for z in x]     
+    meses=[ (x[5:7]) for x in fecha]
+    valores=list(set(meses))
+    lista=[]
+    for i in valores: 
+        c=[b for b in meses if b==i]        
+        c=len(c)        
+        lista.append(((i),c))    
+    lista.sort(key=lambda x: x[0])
+
+    
+
+    return lista
 
 
 def pregunta_05():
@@ -104,8 +147,20 @@ def pregunta_05():
     ]
 
     """
-    return
+    x = open("data.csv", "r").readlines()
+    primera= [z[0] for z in x]   
+    
+    valores=list(set(primera))
+    listas= [(z[0], int(z[2])) for z in x]
+    listas=[list(i) for i in listas]
+     
+    lista=[]
+    for i in valores: 
+        c=[b[1] for b in listas if b[0]==i] 
+        lista.append((i,max(c), min(c)))    
+    lista.sort(key=lambda x: x[0])
 
+    return lista
 
 def pregunta_06():
     """
