@@ -379,7 +379,25 @@ def pregunta_11():
 
 
     """
-    return
+    x = open("data.csv", "r").readlines()
+    x = [z.replace("\t", " ") for z in x]
+    x = [z.replace("\n", "") for z in x] 
+    x=[z.split() for z in x]  
+    x=[(int(z[1]), z[3].split(',')) for z in x] 
+    lista=[]
+    for i in x:
+        lista +=i[1]
+    valores=list(set(lista))
+    valores.sort()
+    cont= []
+
+    for j in valores:
+        b=[m[0] for m in x if j in m[1] ]
+        
+        cont.append(sum(b))
+        
+    dicc= dict(zip(valores, cont))
+    return dicc
 
 
 def pregunta_12():
@@ -397,4 +415,37 @@ def pregunta_12():
     }
 
     """
-    return
+    import re
+    x = open("data.csv", "r").readlines()
+    x = [z.replace("\t", " ") for z in x]
+    x = [z.replace("\n", "") for z in x] 
+    x=[z.split() for z in x]      
+    x=[(z[0], z[4].split(',')) for z in x] 
+    primera= [z[0] for z in x]
+    segunda=[z[1] for z in x]
+    sec=[]
+    pattern = r'\d{1,2}'
+    for m in segunda: 
+        a=[(re.findall(pattern, j)) for j in m] 
+        
+        sec.append(a)
+    num=[]
+    for m in sec: 
+        f=[int(d[0]) for d in m]
+        num.append(sum(f))
+    
+    valores= list(set(primera))
+    valores.sort()
+
+    doble=[[num[i], primera[i]] for i in range(len(primera))]
+    sol1=[]
+    sol2=[]
+    for k in valores: 
+        g=[i[0] for i in doble if i[1]==k]
+        sol1.append(k); sol2.append(sum(g))
+
+    dicc= dict(zip(sol1, sol2))
+    return dicc
+    
+print(pregunta_12())
+
