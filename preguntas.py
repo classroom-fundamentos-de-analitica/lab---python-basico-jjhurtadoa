@@ -21,7 +21,11 @@ def pregunta_01():
     214
 
     """
-    return
+    x = open("data.csv", "r").readlines()
+    
+
+    
+    return len(x)
 
 
 def pregunta_02():
