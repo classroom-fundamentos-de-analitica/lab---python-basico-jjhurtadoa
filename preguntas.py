@@ -44,18 +44,13 @@ def pregunta_02():
     ]
 
     """
-    x = open("data.csv", "r").readlines()
+    x= open("data.csv", "r").readlines()
     primera= [(z[0]) for z in x]
     valores=list(set(primera))
-    lista=[]
-    for i in valores: 
-        c=[b for b in primera if b==i]        
-        c=len(c)        
-        lista.append((i,c))    
-    lista.sort(key=lambda x: x[0])
-
-
+    lista=[(i,len([b for b in primera if b==i])) for i in valores]
+    lista.sort(key= lambda x:x[0])
     
+
     return lista
 
 
